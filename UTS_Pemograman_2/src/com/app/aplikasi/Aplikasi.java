@@ -24,9 +24,17 @@ public class Aplikasi extends javax.swing.JFrame {
      */
     public Aplikasi() {
         initComponents();
+        setLocationRelativeTo(null);
         initData();
         model = new Model(listData);
         tableModel.setModel(model);
+    }
+    
+    public void addEntity(Entity entity){
+        
+        listData.add(entity);
+        model = new Model(listData);
+        tableModel.setModel(model);        
     }
     
     private void  initData(){
@@ -46,7 +54,7 @@ public class Aplikasi extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tableModel = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        btnTambah = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -69,7 +77,12 @@ public class Aplikasi extends javax.swing.JFrame {
         tableModel.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tableModel);
 
-        jButton1.setText("Tambah");
+        btnTambah.setText("Tambah");
+        btnTambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTambahActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Ubah");
 
@@ -86,7 +99,7 @@ public class Aplikasi extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 711, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(btnTambah)
                         .addGap(18, 18, 18)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -102,7 +115,7 @@ public class Aplikasi extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(btnTambah)
                     .addComponent(jButton4)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
@@ -111,6 +124,11 @@ public class Aplikasi extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
+        FormDetail formDetail = new FormDetail(this, true);
+        formDetail.setVisible(true);
+    }//GEN-LAST:event_btnTambahActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,7 +166,7 @@ public class Aplikasi extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnTambah;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
